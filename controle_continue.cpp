@@ -25,79 +25,13 @@
 
 #include <iostream>
 #include <string>
+#include "Personne.h"
+#include "Chef.h"
+#include "Employe.h"
+#include "Directeur.h"
 
 
 using namespace std;
-
-class Personne {
-private:
-  string nom;
-  string prenom;
-  string dateDeNaissance;
-
-public:
-  Personne(string nom, string prenom, string dateDeNaissance) {
-    this->nom = nom;
-    this->prenom = prenom;
-    this->dateDeNaissance = dateDeNaissance;
-  }
-
-  void Afficher() {
-    std::cout << "Nom: " << nom << std::endl;
-    std::cout << "Prénom: " << prenom << std::endl;
-    std::cout << "Date de naissance: " << dateDeNaissance << std::endl;
-  }
-};
-
-class Employe : public Personne {
-private:
-  double salaire;
-
-public:
-  Employe(string nom, string prenom, string dateDeNaissance, double salaire)
-      : Personne(nom, prenom, dateDeNaissance) {
-    this->salaire = salaire;
-  }
-
-  void Afficher() {
-    Personne::Afficher();
-      std::cout << "Salaire: " << salaire << std::endl;
-  }
-};
-
-class Chef : public Employe {
-private:
-  string service;
-
-public:
-  Chef(string nom, string prenom, string dateDeNaissance, double salaire,
-       string service)
-      : Employe(nom, prenom, dateDeNaissance, salaire) {
-    this->service = service;
-  }
-
-  void Afficher() {
-    Employe::Afficher();
-      std::cout << "Service: " << service << std::endl;
-  }
-};
-
-class Directeur : public Chef {
-private:
-  string societe;
-
-public:
-  Directeur(string nom, string prenom, string dateDeNaissance, double salaire,
-            string service, string societe)
-      : Chef(nom, prenom, dateDeNaissance, salaire, service) {
-    this->societe = societe;
-  }
-
-    void Afficher() {
-      Chef::Afficher();
-      std::cout << "Société: " << societe << std::endl;
-    }
-  };
 
 
 int main() {
